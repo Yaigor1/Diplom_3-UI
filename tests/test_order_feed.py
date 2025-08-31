@@ -20,7 +20,7 @@ class TestOrderFeed:
         order_feed.go_to_order_feed_page()
         order_feed.wait_for_element_to_be_visible(OrderFeedLocators.ORDER_FEED_TITLE)
         order_feed.open_last_order()
-        assert order_feed.find_element(*OrderFeedLocators.INGREDIENTS_TITLE).text == 'Cостав'
+        assert order_feed.get_ingredients_title_text() == 'Cостав'
 
     @allure.description("Отображение заказов пользователя из раздела «История заказов» на странице «Лента заказов»")
     def test_created_order_is_displayed_in_order_feed(self, driver):

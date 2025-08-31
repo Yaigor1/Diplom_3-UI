@@ -37,5 +37,6 @@ class OrderFeedPage(BasePage):
     def get_order_in_progress(self):
         return self.get_element_text(*OrderFeedLocators.ORDER_IN_PROGRESS)
 
-
+    def get_ingredients_title_text(self):
+        return self.driver.find_element(*OrderFeedLocators.INGREDIENTS_TITLE).text
 

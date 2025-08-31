@@ -24,3 +24,12 @@ class PasswordRecoveryPage(BasePage):
 
     def click_on_show_password_button(self):
         self.click_on_element(*PasswordRecoveryLocators.SHOW_PASSWORD_BUTTON)
+
+    def get_password_recovery_button_text(self):
+        return self.driver.find_element(*PasswordRecoveryLocators.PASSWORD_RECOVERY_BUTTON).text
+
+    def get_password_save_button_text(self):
+        return self.driver.find_element(*PasswordRecoveryLocators.PASSWORD_SAVE_BUTTON).text
+    
+    def get_password_field_class(self):
+        return self.driver.find_element(*PasswordRecoveryLocators.PASSWORD_FIELD).get_attribute("class")

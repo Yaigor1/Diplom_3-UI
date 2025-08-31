@@ -14,10 +14,11 @@ class TestProfile:
     @allure.description("Переход по клику на «Личный кабинет»")
     def test_go_to_login_page(self, driver):
         main_page = MainPage(driver, Urls.base_url)
+        profile_page = ProfilePage(driver, Urls.base_url)
 
         main_page.open_base_url()
         main_page.click_on_profile_button()
-        assert driver.find_element(*LoginPageLocators.LOGIN_BUTTON).text == 'Войти', 'Нет кнопки "Войти'
+        assert profile_page.get_login_button_text() == 'Войти', 'Нет кнопки "Войти'
 
     @allure.description("Переход в раздел «История заказов»")
     def test_go_to_order_feed(self, driver):
@@ -55,4 +56,4 @@ class TestProfile:
         order_feed.wait_for_element_to_be_visible(ProfilePageLocators.LOGOUT_SECTION)
         profile_page.click_on_logout_section()
         order_feed.wait_for_element_to_be_visible(LoginPageLocators.LOGIN_BUTTON)
-        assert driver.find_element(*LoginPageLocators.LOGIN_BUTTON).text == "Войти", "Выход из аккаунта не произошёл"
+        assert profile_page.get_login_button_text() == "Войти", "Выход из аккаунта не произошёл"

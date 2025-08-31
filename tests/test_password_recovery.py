@@ -16,8 +16,7 @@ class TestPasswordRecovery:
         main_page.click_on_profile_button()
         password_recovery_page.scroll_to_password_recovery_link()
         password_recovery_page.click_on_password_recovery_link()
-        assert driver.find_element(
-            *PasswordRecoveryLocators.PASSWORD_RECOVERY_BUTTON).text == 'Восстановить', 'Нет кнопки "Восстановить"'
+        assert password_recovery_page.get_password_recovery_button_text() == 'Восстановить', 'Нет кнопки "Восстановить"'
 
     @allure.description("Ввод почты и клик по кнопке «Восстановить»")
     def test_password_recovery_button_click(self, driver):
@@ -32,8 +31,7 @@ class TestPasswordRecovery:
         password_recovery_page.set_email()
         password_recovery_page.click_on_password_recovery_button()
         order_feed.wait_for_element_to_be_visible(PasswordRecoveryLocators.PASSWORD_SAVE_BUTTON)
-        assert driver.find_element(
-            *PasswordRecoveryLocators.PASSWORD_SAVE_BUTTON).text == 'Сохранить', 'Нет кнопки "Сохранить"'
+        assert password_recovery_page.get_password_save_button_text() == 'Сохранить', 'Нет кнопки "Сохранить"'
 
     @allure.description("Клик по кнопке показать/скрыть пароль делает поле активным — подсвечивает его")
     def test_password_field_is_active(self, driver):
@@ -51,5 +49,5 @@ class TestPasswordRecovery:
         password_recovery_page.set_new_password()
         # Не пришлось использовать данный метод, так как поле уже подсвечено после ввода пароля
         # password_recovery_page.click_on_show_password_button()
-        assert "active" in driver.find_element(*PasswordRecoveryLocators.PASSWORD_FIELD).get_attribute("class"), "Поле пароля не стало активным после клика."
+        assert "active" in password_recovery_page.get_password_field_class(), "Поле пароля не стало активным после клика."
 

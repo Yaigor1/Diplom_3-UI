@@ -1,3 +1,4 @@
+from locators.login_page_locators import LoginPageLocators
 from locators.profile_page_locators import ProfilePageLocators
 from page_objects.base_page import BasePage
 
@@ -10,3 +11,6 @@ class ProfilePage(BasePage):
 
     def click_on_logout_section(self):
         self.click_on_element(*ProfilePageLocators.LOGOUT_SECTION)
+
+    def get_login_button_text(self):
+        return self.driver.find_element(*LoginPageLocators.LOGIN_BUTTON).text
